@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>简单文件上传</title>
+    <style>
+        /* 简单美化样式 */
+        body {
+            max-width: 500px;
+            margin: 50px auto;
+            font-family: Arial;
+        }
+        .upload-box {
+            padding: 30px;
+            border: 2px dashed #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-box">
+        <h2>选择文件上传</h2>
+        <!-- 上传按钮 -->
+        <input type="file" id="fileInput" multiple>
+        <p id="fileList"></p>
+    </div>
+
+    <script>
+        // 获取元素
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        // 监听文件选择
+        fileInput.addEventListener('change', function(e) {
+            const files = e.target.files;
+            if (files.length === 0) return;
+
+            // 显示上传的文件名
+            let names = "已选择文件：<br>";
+            for (let file of files) {
+                names += file.name + "<br>";
+            }
+            fileList.innerHTML = names;
+        });
+    </script>
+</body>
+</html>
